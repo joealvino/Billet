@@ -1,14 +1,12 @@
 # settings.py (extraits et paramètres essentiels)
 from pathlib import Path
 import os
-import environ
 
-env = environ.Env()
-environ.Env.read_env()
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'change_me_for_prod'
-DEBUG = True
-ALLOWED_HOSTS = ['*']
+DEBUG = False
+ALLOWED_HOSTS = ['tonusername.pythonanywhere.com']
 
 
 INSTALLED_APPS = [
@@ -73,17 +71,6 @@ USE_I18N = True
 USE_TZ = True
 
 
-
 STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Ton domaine Railway (tu le verras après le déploiement)
-SITE_URL = "nom-de-ton-projet.up.railway.app"
-
-# L’URL complète de ton site hébergé
-RAILWAY_URL = "https://nom-de-ton-projet.up.railway.app"
-
-# Django doit faire confiance à ce domaine
-CSRF_TRUSTED_ORIGINS = [
-    "https://nom-de-ton-projet.up.railway.app",
-]

@@ -13,6 +13,7 @@ from docxtpl import DocxTemplate, InlineImage
 from docx.shared import Mm
 from qrcode import make as make_qr
 from io import BytesIO
+import pythoncom
 
 from .models import Billet
 from docx2pdf import convert  # Assure-toi d'avoir installé docx2pdf
@@ -31,6 +32,7 @@ def create_billet(request):
 
         for _ in range(nombre):
             billet = Billet.objects.create(type_billet=type_billet)
+            scan_url = request.build_absolute_uri(reverse('billetapp:scan_billet', args=[billet.pk]))
             scan_url = f"{settings.NGROK_URL}{reverse('billetapp:scan_billet', args=[billet.pk])}"
             qr = qrcode.QRCode(version=1, box_size=10, border=4)
             qr.add_data(scan_url)
