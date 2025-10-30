@@ -13,7 +13,6 @@ from docxtpl import DocxTemplate, InlineImage
 from docx.shared import Mm
 from qrcode import make as make_qr
 from io import BytesIO
-import pythoncom
 
 from .models import Billet
 from docx2pdf import convert  # Assure-toi d'avoir installé docx2pdf
