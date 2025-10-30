@@ -1,8 +1,10 @@
 # settings.py (extraits et paramètres essentiels)
 from pathlib import Path
 import os
+import environ
 
-
+env = environ.Env()
+environ.Env.read_env()
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'change_me_for_prod'
 DEBUG = True
@@ -71,13 +73,17 @@ USE_I18N = True
 USE_TZ = True
 
 
+
 STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-SITE_URL = "a9e9d0d31bf0.ngrok-free.app"
+# Ton domaine Railway (tu le verras après le déploiement)
+SITE_URL = "nom-de-ton-projet.up.railway.app"
 
-NGROK_URL = "https://a9e9d0d31bf0.ngrok-free.app"
+# L’URL complète de ton site hébergé
+RAILWAY_URL = "https://nom-de-ton-projet.up.railway.app"
 
+# Django doit faire confiance à ce domaine
 CSRF_TRUSTED_ORIGINS = [
-    "https://a9e9d0d31bf0.ngrok-free.app",
+    "https://nom-de-ton-projet.up.railway.app",
 ]
