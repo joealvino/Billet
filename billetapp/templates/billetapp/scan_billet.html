@@ -1,0 +1,10 @@
+{% extends 'billetapp/base.html' %}
+{% block content %}
+<div class="card">
+<h2>Résultat du scan</h2>
+<p>{{ message }}</p>
+<p>Billet #{{ billet.pk }}</p>
+<p>Statut actuel : {{ billet.statut }}</p>
+<p><a href="/create/" class="btn">Retour</a></p>
+</div>
+{% endblock %}

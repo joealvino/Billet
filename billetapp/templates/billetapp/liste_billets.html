@@ -1,0 +1,65 @@
+{% extends 'billetapp/base.html' %}
+{% block content %}
+<style>
+    .btn-scan, .btn-pdf {
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    margin-right: 4px;
+    font-size: 14px;
+}
+
+.btn-scan { background-color: #4caf50; }
+.btn-scan:hover { background-color: #45a049; }
+
+.btn-pdf { background-color: #2196f3; }
+.btn-pdf:hover { background-color: #1976d2; }
+
+</style>
+<h2>Liste de tous les billets</h2>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse; width:100%;">
+  <thead style="background:#f0f0f0;">
+    <tr>
+      <th>ID</th>
+      <th>Type</th>
+      <th>QR Code</th>
+      <th>Statut</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for billet in billets %}
+      <tr>
+        <td>#{{ billet.id }}</td>
+        <td>{{ billet.type_billet }}</td>
+        <td>
+          {% if billet.qr_image %}
+            <img src="{{ billet.qr_image.url }}" alt="QR" width="100" height="100">
+          {% else %}
+            <em>Non généré</em>
+          {% endif %}
+        </td>
+        <td>
+          {% if billet.statut %}
+            ✅ Validé
+          {% else %}
+            ⏳ En attente
+          {% endif %}
+        </td>
+        <td>
+  <a class="btn-scan" href="{% url 'billetapp:scan_billet' billet.id %}">Scanner</a>
+  <a class="btn-pdf" href="{% url 'billetapp:telecharger_billet_pdf' billet.id %}">📄 Télécharger PDF</a>
+</td>
+
+      </tr>
+    {% empty %}
+      <tr><td colspan="5" style="text-align:center;">Aucun billet trouvé</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<br>
+<a class="btn" href="/create/">➕ Créer un nouveau billet</a>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'billetapp/base.html' %}
+{% block content %}
+  <div class="card">
+    <h2>Créer des billets</h2>
+
+    <form method="post" action="/create/">
+      {% csrf_token %}
+      
+      <label for="type_billet"><strong>Type de billet :</strong></label><br>
+      <select name="type_billet" id="type_billet" required>
+        <option value="VIP">🎟️ VIP</option>
+        <option value="PREMIUM">⭐ Premium</option>
+        <option value="SIMPLE" selected>🎫 Simple</option>
+      </select>
+
+      <br><br>
+
+      <label for="nombre"><strong>Nombre de billets à créer :</strong></label><br>
+      <input type="number" name="nombre" id="nombre" value="1" min="1" required>
+
+      <br><br>
+      <button class="btn" type="submit">Créer les billets</button>
+    </form>
+
+    <hr>
+    <a href="/billets/">Voir tous les billets</a>
+  </div>
+{% endblock %}

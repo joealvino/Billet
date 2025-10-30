@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BilletApp</title>
+<style>
+body{font-family:Arial,Helvetica,sans-serif; padding:20px}
+.card{border:1px solid #ddd; padding:16px; border-radius:8px; max-width:420px}
+img.qr{width:200px;height:200px}
+.btn{display:inline-block;padding:8px 12px;border-radius:6px;background:#2d8cf0;color:#fff;text-decoration:none}
+</style>
+</head>
+<body>
+<header>
+<h1>BilletApp</h1>
+<nav>
+  <a href="/create/">Créer un billet</a> |
+  <a href="/billets/">Voir tous les billets</a>
+</nav>
+
+<hr>
+</header>
+<main>
+{% block content %}{% endblock %}
+</main>
+</body>
+</html>
